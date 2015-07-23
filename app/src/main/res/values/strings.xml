@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="action_settings">Settings</string>
     <string name="app_name">Cartrader</string>
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="json_data">JSON data from REST weather request is returned, parsed, and binded</string>
+    <string name="search_for_your_next_car">Search for your next car</string>
+    <string name="sell_your_car_today">Sell your car today. Take a quick picture.</string>
+    <string name="weather">Weather</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="camera">Camera</string>
+    <string name="search">Search</string>
+    <string name="data">Data</string>
+    <string name="great_day_for_shopping">Great day for car shopping? Check your weather</string>
+    <string name="sign_up_for_new_car_notifications">Sign up for new car notifications</string>
 
 </resources>

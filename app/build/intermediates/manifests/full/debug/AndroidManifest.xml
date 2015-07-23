@@ -17,10 +17,6 @@
         android:icon="@drawable/ic_launcher_autotrader"
         android:label="@string/app_name"
         android:theme="@style/Theme.AppCompat.Light.DialogWhenLarge" >
-        <service
-            android:name="com.keshogroup.cartrader.controller.CartraderService"
-            android:icon="@drawable/circle" />
-
         <activity
             android:name="com.keshogroup.cartrader.controller.CartraderActivity"
             android:label="@string/app_name"
@@ -31,6 +27,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name="com.keshogroup.cartrader.controller.CartraderService"
+            android:icon="@drawable/circle" />
     </application>
 
 </manifest>

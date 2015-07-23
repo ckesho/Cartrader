@@ -6,75 +6,74 @@
                 android:paddingLeft="@dimen/activity_horizontal_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_vertical_margin"
-                tools:context="com.keshogroup.cartrader.MainActivity_cartrader">
+                tools:context="com.keshogroup.cartrader.controller.CartraderActivity">
 
     <TextView
         android:id="@+id/textView1"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableRight="@drawable/autotrader"
-        android:text="Cartrader"
+        android:text="@string/app_name"
         android:textSize="40sp"/>
 
     <RelativeLayout
         android:id="@+id/main"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView1"
         android:background="@drawable/blue">
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/weatherButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignTop="@+id/textView2"
             android:layout_marginBottom="15dp"
             android:drawableRight="@drawable/sun"
-            android:text="Weather "/>
+            android:text="@string/weather"/>
 
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/signUpButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/button1"
+            android:layout_below="@+id/weatherButton"
             android:layout_marginBottom="15dp"
             android:drawableRight="@drawable/button_blank"
-            android:text="SIgn Up  "/>
+            android:text="@string/sign_up"/>
 
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/cameraButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/button2"
+            android:layout_below="@+id/signUpButton"
             android:layout_marginBottom="15dp"
             android:drawableRight="@drawable/button_blank"
-            android:text=" Camera "/>
+            android:text="@string/camera"/>
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/searchButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/button3"
+            android:layout_below="@+id/cameraButton"
             android:layout_marginBottom="15dp"
             android:drawableRight="@drawable/button_blank"
-            android:text=" Search  "/>
-
+            android:text="@string/search"/>
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/dataButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/button4"
+            android:layout_below="@+id/searchButton"
             android:layout_marginBottom="15dp"
             android:drawableRight="@drawable/button_blank"
-            android:text="  Data     "/>
+            android:text="@string/data"/>
 
         <TextView
             android:id="@+id/textView2"
@@ -84,16 +83,16 @@
             android:layout_alignParentTop="true"
             android:layout_alignRight="@+id/textView3"
             android:layout_marginTop="15dp"
-            android:text="Great day for car shopping? Check your weather"/>
+            android:text="@string/great_day_for_shopping"/>
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_alignTop="@+id/button2"
-            android:layout_toLeftOf="@+id/button1"
-            android:text="Sign up for new car notifications"/>
+            android:layout_alignTop="@+id/signUpButton"
+            android:layout_toLeftOf="@+id/weatherButton"
+            android:text="@string/sign_up_for_new_car_notifications"/>
 
         <TextView
             android:id="@+id/textView4"
@@ -101,17 +100,17 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignRight="@+id/textView3"
-            android:layout_alignTop="@+id/button3"
-            android:text="Sale your car today, take a quick picture"/>
+            android:layout_alignTop="@+id/cameraButton"
+            android:text="@string/sell_your_car_today"/>
 
         <TextView
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_alignTop="@+id/button4"
-            android:layout_toLeftOf="@+id/button1"
-            android:text="Search for you next car"/>
+            android:layout_alignTop="@+id/searchButton"
+            android:layout_toLeftOf="@+id/weatherButton"
+            android:text="@string/search_for_your_next_car"/>
 
         <TextView
             android:id="@+id/textView6"
@@ -119,8 +118,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignRight="@+id/textView5"
-            android:layout_alignTop="@+id/button5"
-            android:text="JSON data from REST weather request is returned, parsed, and binded"/>
+            android:layout_alignTop="@+id/dataButton"
+            android:text="@string/json_data"/>
 
     </RelativeLayout>
 

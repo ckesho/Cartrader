@@ -11,11 +11,9 @@ import android.net.ConnectivityManager;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
-import com.keshogroup.cartrader.model.CartraderClient;
 import com.keshogroup.cartrader.R;
+import com.keshogroup.cartrader.model.CartraderClient;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.json.JSONTokener;
 
 import java.io.BufferedReader;
@@ -45,9 +43,6 @@ public class CartraderService extends IntentService {
      */
     @Override
     protected void onHandleIntent(Intent intent) {
-        JSONArray jarray = null;
-        JSONArray jarray2 = null;
-        JSONObject jobj = null;
         JSONTokener jtoken = null;
         String array[] = new String[400];
         String gotaction;
@@ -95,7 +90,7 @@ public class CartraderService extends IntentService {
 			  /*
                * invalid code
 			   *
-			  while (!br.ready()){
+			  while (!mBroadcastReceiver.ready()){
 				wait(100);  
 			  }
 			  */

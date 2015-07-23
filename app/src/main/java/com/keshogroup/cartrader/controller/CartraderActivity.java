@@ -8,310 +8,166 @@ package com.keshogroup.cartrader.controller;
  * 
  */
 
-import android.support.v4.content.LocalBroadcastManager;
 import android.app.Activity;
 import android.app.Notification;
-import android.app.NotificationManager;
 import android.app.Notification.Builder;
+import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.ServiceConnection;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.HapticFeedbackConstants;
-import android.view.Menu;
-import android.view.MenuItem;
-
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.keshogroup.cartrader.R;
-
-import java.lang.String;
-
+import com.keshogroup.cartrader.model.CartraderStore;
 
 
 public class CartraderActivity extends Activity {
-	
-	//define views
-	TextView mTextView2, mTextView3, mTextView4;
-	CharSequence mText2;
-	String mString2;
-	SimpleAdapter simpleadapter;
-	ListView lv1,lv2,lv4;
-	ListAdapter listadapter;
-	//ArrayAdapter aadapter;
-	Button mButton1, mButton2, mButton3, mButton4, mButton5, mButtonBack2, mButtonBack;
-	RelativeLayout main, searchlist, restlist;
-	Intent myintent;
-	Intent myintent2;
-	ArrayAdapter<String> aadapter2;
-	//PendingIntent pi;
-	//pi =new PendingIntent();
-	ServiceConnection sc;
-	String sa[] = new String[40];
-	String array[] = new String[400];
-	//static final String REST_ARRAY[] = new String[400];
-	BroadcastReceiver br= new BroadcastReceiver() {
-		
-		@Override
-		public void onReceive(Context context, Intent intent) {
-			// TODO Auto-generated method stub
-			Log.i("JSON", "Broadcasr recieved");
-			if(intent.getStringArrayExtra("com.keshogroup.cartrader.array")!=null){
-				//update the array, adapter, and view
-				array=intent.getStringArrayExtra("com.keshogroup.cartrader.array");
-            	aadapter2 = new ArrayAdapter<String>(CartraderActivity.this, R.layout.list2, array);
-            	lv2.setAdapter(aadapter2);
-				Log.i("JSON", "updated array");
-			}
-		}
-	};
-	LocalBroadcastManager lbm=null;
-	IntentFilter filter;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_cartrader);
-		
-		filter= new IntentFilter("actionpack");
-		this.registerReceiver(br, filter);
-		//LocalBroadcastManager.getInstance(this).registerReceiver(br, filter);
-		myintent = new Intent(this, CartraderService.class);
-		myintent2= new Intent(MediaStore.INTENT_ACTION_STILL_IMAGE_CAMERA);//emulator has no camera
-		
-		array[0]="temp";
-		 
-		sa[0]="Dodge Caravan";      sa[4]="Dodge Caravan";        sa[5]="Dodge Caravan";
-		sa[1]="Mazda 626";
-		sa[2]="Honda CRV";
-		sa[3]="Chevorlet Corvette";
-		sa[6]="Dodge intrepid";      sa[15]="Dodge Caravan";        sa[24]="Dodge Caravan";
-		sa[7]="Dodge charger";      sa[16]="Lincoln Towncar";        sa[25]="Nissan Maxima";
-		sa[8]="Dodge neon";      sa[17]="Dodge Caravan";        sa[26]="Dodge Caravan";
-		sa[9]="Dodge stingray";      sa[18]="Dodge Caravan";        sa[27]="Dodge Caravan";
-		sa[10]="Dodge viper";      sa[19]="Dodge Caravan";        sa[28]="Kia Sorenton";
-		sa[11]="Dodge ram";      sa[20]="Dodge neon";        sa[28]="Dodge Caravan";
-		sa[12]="Toyota corolla";      sa[21]="Dodge Caravan";        sa[29]="Dodge Caravan";
-		sa[13]="Toyota camry";      sa[22]="Lexus is250";        sa[30]="Lexus ES 350";
-		sa[14]="Dodge Caravan";      sa[23]="Dodge Caravan";        sa[31]="Dodge Caravan";
-		
-		//fill up the array so there are no null pointers
-		for(int c=0; c<400;c++){
-			array[c]="no data";
-		}
-		
-		ArrayAdapter<String> aadapter = new ArrayAdapter<String>(this, R.layout.lists, sa);
-		aadapter2 = new ArrayAdapter<String>(this, R.layout.list2, array);
-		
-		//ArrayAdapter aadapter = new ArrayAdapter(this, R.string.app_name);
-		//ArrayAdapter aadapter = new ArrayAdapter(this, R.id.l2tv1);
-		
-		mTextView2 = (TextView) findViewById(R.id.textView2);
-		mTextView3 = (TextView) findViewById(R.id.textView3);
-		mTextView4 = (TextView) findViewById(R.id.textView4);
-		lv1 = (ListView) findViewById(R.id.listView1);
-		lv2 = (ListView) findViewById(R.id.listView2);
-		mButton1 = (Button) findViewById(R.id.button1);
-		mButton2 = (Button) findViewById(R.id.button2);
-		mButton3 = (Button) findViewById(R.id.button3);
-		mButton4 = (Button) findViewById(R.id.button4);
-		mButton5 = (Button) findViewById(R.id.button5);
-		mButtonBack = (Button) findViewById(R.id.buttonback);
-		mButtonBack2 = (Button) findViewById(R.id.buttonback2);
-		main = (RelativeLayout) findViewById(R.id.main);
-		searchlist = (RelativeLayout) findViewById(R.id.searchlist);
-		restlist = (RelativeLayout) findViewById(R.id.restlist);
-		//ListAdapter la = new ListAdapter(this.setContentView(R.array.car_database));
-		//ListAdapter la = new ListAdapter(this, R.array.car_database);
-		
-		mString2 = "mystring";
-		mText2 = (CharSequence) mString2;
-		
-		//mTextView4.setText(mText2);
-		//lv1.addHeaderView(mTextView4);
-		lv1.setAdapter(aadapter);
-		lv2.setAdapter(aadapter2);
-		//mTextView3.setText(getPackageName());
-		
+    private static final String TAG = "CartraderActivity";
 
-		
-		
-		sc = new ServiceConnection(){
+    ArrayAdapter<String> mStringAdapter2;
+    Button mWeatherButton, mSignUpButton, mCameraButton, mSearchButton, mDataButton, mButtonBack2, mButtonBack;
+    ListView mListView1, mListView2;
+    Intent mCartraderServiceIntent;
+    Intent mCameraIntent = new Intent(MediaStore.INTENT_ACTION_STILL_IMAGE_CAMERA);
+    IntentFilter mIntentFilter;
+    RelativeLayout mMain, mSearchList, mRestList;
+    String mCarNames[];
+    String array[] = new String[400];
+    TextView mTextView2, mTextView3, mTextView4;
 
-			@Override
-			public void onServiceConnected(ComponentName name, IBinder service) {
-				// TODO Auto-generated method stub
-				
-			}
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_cartrader);
 
-			@Override
-			public void onServiceDisconnected(ComponentName name) {
-				// TODO Auto-generated method stub
-				
-			}};
-		
-		
-		
-		
+        mTextView2 = (TextView) findViewById(R.id.textView2);
+        mTextView3 = (TextView) findViewById(R.id.textView3);
+        mTextView4 = (TextView) findViewById(R.id.textView4);
+        mListView1 = (ListView) findViewById(R.id.listView1);
+        mListView2 = (ListView) findViewById(R.id.listView2);
+
+        mWeatherButton = (Button) findViewById(R.id.weatherButton);
+        mSignUpButton = (Button) findViewById(R.id.signUpButton);
+        mCameraButton = (Button) findViewById(R.id.cameraButton);
+        mSearchButton = (Button) findViewById(R.id.searchButton);
+        mDataButton = (Button) findViewById(R.id.dataButton);
+
+        mButtonBack = (Button) findViewById(R.id.backButton);
+        mButtonBack2 = (Button) findViewById(R.id.backButton2);
+        mMain = (RelativeLayout) findViewById(R.id.main);
+        mSearchList = (RelativeLayout) findViewById(R.id.searchlist);
+        mRestList = (RelativeLayout) findViewById(R.id.restlist);
+
+        mIntentFilter = new IntentFilter("actionpack");
+        this.registerReceiver(mBroadcastReceiver, mIntentFilter);
+        mCartraderServiceIntent = new Intent(this, CartraderService.class);
+
+        array[0] = "temp";
+        for (int c = 0; c < 400; c++) {
+            array[c] = "no data";
+        }
+
+        mCarNames = CartraderStore.getCarsName();
+
+        ArrayAdapter<String> aadapter = new ArrayAdapter<String>(this, R.layout.lists, mCarNames);
+        mStringAdapter2 = new ArrayAdapter<String>(this, R.layout.list2, array);
+
+        mListView1.setAdapter(aadapter);
+        mListView2.setAdapter(mStringAdapter2);
+
+        mWeatherButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startService(mCartraderServiceIntent);
+            }
+        });
 
 
-		
-		
-		//*************Define buttons onclick actions	         
-		
-        
-        mButton1.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				// Perform action on click
+        mSignUpButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                stopService(mCartraderServiceIntent);
+
+                Notification notification;
+                Builder notificationBuilder = new Builder(CartraderActivity.this);
+                String contentTitle = "New Car Alert";
+                String contentText = "Visit autotrader.com";
+
+                notificationBuilder.setTicker(contentTitle);
+                notificationBuilder.setSmallIcon(com.keshogroup.cartrader.R.drawable.autotraderbw);
+                notificationBuilder.setContentTitle(contentTitle);
+                notificationBuilder.setContentText(contentText);
+                notificationBuilder.setContentIntent(null);
+                notificationBuilder.setAutoCancel(true);
+                notification = notificationBuilder.build();
+
+                NotificationManager notificationManager;
+                notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                notificationManager.notify(28, notification);
+
+                mSignUpButton.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, 2);
+            }
+        });
 
 
-				//myservice.startService(myintent3);//crashes
+        mCameraButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(mCameraIntent);
+            }
+        });
 
-				startService(myintent);
-				//bindService(myintent, sc, 0);
+        mSearchButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                mSearchList.setVisibility(View.VISIBLE);
+                mMain.setVisibility(View.GONE);
 
+            }
+        });
 
-				mText2 = (CharSequence) myintent.getPackage();
-				//mTextView2.setText(mText2);
-
-				Log.i("popfly", "sent intent");
-			}
-		});
-        
-        
-        mButton2.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				// Perform action on click
-				stopService(myintent);
-
-				//startActivity(myintent2); //not needed
-
-				//*************
-				Notification notice;
-				Builder noticebuilder = new Builder(CartraderActivity.this);
-				String str = "New Car Alert";
-				String str2 = "Visit autotrader.com";
-				CharSequence tickerText = str.subSequence(0, str.length());
-
-				noticebuilder.setTicker(tickerText);
-				noticebuilder.setSmallIcon(com.keshogroup.cartrader.R.drawable.autotraderbw);
-				noticebuilder.setContentTitle(tickerText);
-				noticebuilder.setContentText(str2);
-				noticebuilder.setContentIntent(null); //no intent needed for test
-				noticebuilder.setAutoCancel(true);
-				notice = noticebuilder.build();
-				// notice= new Notification.Builder(this).build();
-
-				NotificationManager nm;
-				nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);//attach to the system service
-				nm.notify(28, notice); //send out notice with notification manager
-
-				//*************
-
-				mButton2.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, 2);
-
-			}
-		});
-        
-        
-        
-        mButton3.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				// Perform action on click
-
-
-				startActivity(myintent2);//camera
-
-				Log.i("popfly", "sent camera intent");
-			}
-		});
-        
-        mButton4.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				// Perform action on click
-				//mTextView4.setText(mText2);
-				sa[3] = "mButton4";
-				searchlist.setVisibility(0);//0vis, 4invis, 8 gone
-				main.setVisibility(8);//0vis, 4invis, 8 gone
-
-			}
-		});
-        
         mButtonBack.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				// Perform action on click
-				searchlist.setVisibility(8);//0vis, 4invis, 8 gone
-				main.setVisibility(0);//0vis, 4invis, 8 gone
+            public void onClick(View v) {
+                mSearchList.setVisibility(View.GONE);
+                mMain.setVisibility(View.VISIBLE);
 
-			}
-		});
-        
-        
-        
-        mButton5.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				// Perform action on click
-				//mTextView4.setText(mText2);
-				//array=myintent.getStringArrayExtra("com.keshogroup.cartrader.array");
+            }
+        });
 
-				//Log.i("JSON", " "+array[51]);
+        mDataButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                mRestList.setVisibility(View.VISIBLE);
+                mMain.setVisibility(View.GONE);
 
-				//aadapter2.clear();
-				//aadapter2.add("array");
-				//aadapter2.notifyDataSetChanged();
-				//lv2.requestLayout();
-				//lv2.invalidate();
+            }
+        });
 
-				//aadapter2.;//resets the data based on any new REST info
-				restlist.setVisibility(0);//0vis, 4invis, 8 gone
-				main.setVisibility(8);//0vis, 4invis, 8 gone
-
-			}
-		});
-        
         mButtonBack2.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				// Perform action on click
-				restlist.setVisibility(8);//0vis, 4invis, 8 gone
-				main.setVisibility(0);//0vis, 4invis, 8 gone
+            public void onClick(View v) {
+                mRestList.setVisibility(View.GONE);
+                mMain.setVisibility(View.VISIBLE);
+            }
+        });
 
-			}
-		});
-        
-        
-        
-        
-	}//end oncreate
+    }
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main_activity_cartrader, menu);
-		return true;
-	}
+    private BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getStringArrayExtra("com.keshogroup.cartrader.array") != null) {
+                array = intent.getStringArrayExtra("com.keshogroup.cartrader.array");
+                mStringAdapter2 = new ArrayAdapter<String>(CartraderActivity.this, R.layout.list2, array);
+                mListView2.setAdapter(mStringAdapter2);
+                Log.i("JSON", "updated array");
+            }
+        }
+    };
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
 }

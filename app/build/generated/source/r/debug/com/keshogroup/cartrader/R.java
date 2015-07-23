@@ -1558,19 +1558,14 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f0c003d;
         public static final int action_mode_bar_stub=0x7f0c003c;
         public static final int action_mode_close_button=0x7f0c0025;
-        public static final int action_settings=0x7f0c0070;
         public static final int activity_chooser_view_content=0x7f0c0026;
         public static final int alertTitle=0x7f0c0030;
         public static final int always=0x7f0c0016;
+        public static final int backButton=0x7f0c006e;
+        public static final int backButton2=0x7f0c006b;
         public static final int beginning=0x7f0c0013;
-        public static final int button1=0x7f0c0051;
-        public static final int button2=0x7f0c0053;
-        public static final int button3=0x7f0c0054;
-        public static final int button4=0x7f0c0055;
-        public static final int button5=0x7f0c0056;
         public static final int buttonPanel=0x7f0c0036;
-        public static final int buttonback=0x7f0c006e;
-        public static final int buttonback2=0x7f0c006b;
+        public static final int cameraButton=0x7f0c0054;
         public static final int cancel_action=0x7f0c005e;
         public static final int checkbox=0x7f0c0038;
         public static final int chronometer=0x7f0c0064;
@@ -1578,6 +1573,7 @@ containing a value of this type.
         public static final int contentPanel=0x7f0c0031;
         public static final int custom=0x7f0c0035;
         public static final int customPanel=0x7f0c0034;
+        public static final int dataButton=0x7f0c0056;
         public static final int decor_content_parent=0x7f0c003e;
         public static final int default_activity_button=0x7f0c0029;
         public static final int dialog=0x7f0c001b;
@@ -1616,6 +1612,7 @@ containing a value of this type.
         public static final int restlist=0x7f0c006a;
         public static final int screen=0x7f0c001f;
         public static final int scrollView=0x7f0c0032;
+        public static final int searchButton=0x7f0c0055;
         public static final int search_badge=0x7f0c0044;
         public static final int search_bar=0x7f0c0043;
         public static final int search_button=0x7f0c0045;
@@ -1632,6 +1629,7 @@ containing a value of this type.
         public static final int showCustom=0x7f0c000f;
         public static final int showHome=0x7f0c0010;
         public static final int showTitle=0x7f0c0011;
+        public static final int signUpButton=0x7f0c0053;
         public static final int split_action_bar=0x7f0c0007;
         public static final int src_atop=0x7f0c0020;
         public static final int src_in=0x7f0c0021;
@@ -1654,6 +1652,7 @@ containing a value of this type.
         public static final int topPanel=0x7f0c002e;
         public static final int up=0x7f0c0008;
         public static final int useLogo=0x7f0c0012;
+        public static final int weatherButton=0x7f0c0051;
         public static final int withText=0x7f0c001a;
         public static final int wrap_content=0x7f0c001d;
     }
@@ -1708,9 +1707,6 @@ containing a value of this type.
         public static final int select_dialog_singlechoice_material=0x7f030028;
         public static final int support_simple_spinner_dropdown_item=0x7f030029;
     }
-    public static final class menu {
-        public static final int main_activity_cartrader=0x7f0d0000;
-    }
     public static final class string {
         public static final int abc_action_bar_home_description=0x7f050000;
         public static final int abc_action_bar_home_description_format=0x7f05000d;
@@ -1731,11 +1727,21 @@ containing a value of this type.
         public static final int abc_toolbar_collapse_description=0x7f050010;
         public static final int action_settings=0x7f050011;
         public static final int app_name=0x7f050012;
-        public static final int hello_world=0x7f050013;
-        public static final int item1=0x7f050014;
-        public static final int item2=0x7f050015;
-        public static final int item3=0x7f050016;
-        public static final int status_bar_notification_info_overflow=0x7f050017;
+        public static final int camera=0x7f050013;
+        public static final int data=0x7f050014;
+        public static final int great_day_for_shopping=0x7f050015;
+        public static final int hello_world=0x7f050016;
+        public static final int item1=0x7f050017;
+        public static final int item2=0x7f050018;
+        public static final int item3=0x7f050019;
+        public static final int json_data=0x7f05001a;
+        public static final int search=0x7f05001b;
+        public static final int search_for_your_next_car=0x7f05001c;
+        public static final int sell_your_car_today=0x7f05001d;
+        public static final int sign_up=0x7f05001e;
+        public static final int sign_up_for_new_car_notifications=0x7f05001f;
+        public static final int status_bar_notification_info_overflow=0x7f050020;
+        public static final int weather=0x7f050021;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat=0x7f070074;
