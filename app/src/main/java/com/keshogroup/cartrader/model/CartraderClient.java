@@ -1,4 +1,4 @@
-package com.keshogroup.cartrader;
+package com.keshogroup.cartrader.model;
 
 /**
  * Created by darren on 7/23/15.

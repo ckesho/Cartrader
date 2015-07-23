@@ -48,13 +48,13 @@ MERGED from com.android.support:support-v4:22.2.0:22:5
 		ADDED from AndroidManifest.xml:16:9
 	android:theme
 		ADDED from AndroidManifest.xml:18:9
-service#com.keshogroup.cartrader.CartraderService
+service#com.keshogroup.cartrader.controller.CartraderService
 ADDED from AndroidManifest.xml:22:6
 	android:icon
-		ADDED from AndroidManifest.xml:22:48
+		ADDED from AndroidManifest.xml:22:59
 	android:name
 		ADDED from AndroidManifest.xml:22:15
-activity#com.keshogroup.cartrader.CartraderActivity
+activity#com.keshogroup.cartrader.controller.CartraderActivity
 ADDED from AndroidManifest.xml:25:9
 	android:screenOrientation
 		ADDED from AndroidManifest.xml:29:13

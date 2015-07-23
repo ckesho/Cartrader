@@ -1,4 +1,4 @@
-package com.keshogroup.cartrader;
+package com.keshogroup.cartrader.controller;
 
 /*
  * Chris Kesho
@@ -36,6 +36,8 @@ import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+import com.keshogroup.cartrader.R;
+
 import java.lang.String;
 
 
@@ -50,11 +52,8 @@ public class CartraderActivity extends Activity {
 	ListView lv1,lv2,lv4;
 	ListAdapter listadapter;
 	//ArrayAdapter aadapter;
-	Button button1, button2, button3, button4, button5, buttonback2, buttonback; 
+	Button mButton1, mButton2, mButton3, mButton4, mButton5, mButtonBack2, mButtonBack;
 	RelativeLayout main, searchlist, restlist;
-	//CartraderService myservice;
-	//CartraderService myservice= new CartraderService("CartraderService");
-	//myservice.onHandleIntent(myintent);//works
 	Intent myintent;
 	Intent myintent2;
 	ArrayAdapter<String> aadapter2;
@@ -85,7 +84,7 @@ public class CartraderActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main_activity_cartrader);
+		setContentView(R.layout.activity_cartrader);
 		
 		filter= new IntentFilter("actionpack");
 		this.registerReceiver(br, filter);
@@ -125,13 +124,13 @@ public class CartraderActivity extends Activity {
 		mTextView4 = (TextView) findViewById(R.id.textView4);
 		lv1 = (ListView) findViewById(R.id.listView1);
 		lv2 = (ListView) findViewById(R.id.listView2);
-		button1 = (Button) findViewById(R.id.button1);
-		button2 = (Button) findViewById(R.id.button2);
-		button3 = (Button) findViewById(R.id.button3);
-		button4 = (Button) findViewById(R.id.button4);
-		button5 = (Button) findViewById(R.id.button5);
-		buttonback = (Button) findViewById(R.id.buttonback);
-		buttonback2 = (Button) findViewById(R.id.buttonback2);
+		mButton1 = (Button) findViewById(R.id.button1);
+		mButton2 = (Button) findViewById(R.id.button2);
+		mButton3 = (Button) findViewById(R.id.button3);
+		mButton4 = (Button) findViewById(R.id.button4);
+		mButton5 = (Button) findViewById(R.id.button5);
+		mButtonBack = (Button) findViewById(R.id.buttonback);
+		mButtonBack2 = (Button) findViewById(R.id.buttonback2);
 		main = (RelativeLayout) findViewById(R.id.main);
 		searchlist = (RelativeLayout) findViewById(R.id.searchlist);
 		restlist = (RelativeLayout) findViewById(R.id.restlist);
@@ -174,127 +173,123 @@ public class CartraderActivity extends Activity {
 		//*************Define buttons onclick actions	         
 		
         
-        button1.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
+        mButton1.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				// Perform action on click
 
 
-            	
-            	//myservice.startService(myintent3);//crashes
-            	
-            	startService(myintent);
-            	//bindService(myintent, sc, 0);
-            	
-            	
+				//myservice.startService(myintent3);//crashes
 
-            	
-            	
-            	mText2 = (CharSequence)myintent.getPackage();
-            	//mTextView2.setText(mText2);
+				startService(myintent);
+				//bindService(myintent, sc, 0);
 
-            	Log.i("popfly", "sent intent");
-           	 }
-            });        
+
+				mText2 = (CharSequence) myintent.getPackage();
+				//mTextView2.setText(mText2);
+
+				Log.i("popfly", "sent intent");
+			}
+		});
         
         
-        button2.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
-           	stopService(myintent);
-           	
-           	//startActivity(myintent2); //not needed
-    		
-           	//*************
-			  Notification notice;
-			  Builder noticebuilder= new Builder(CartraderActivity.this);
-			  String str= "New Car Alert";
-			  String str2= "Visit autotrader.com";
-			  CharSequence tickerText= str.subSequence(0, str.length());
-			  
-			  noticebuilder.setTicker(tickerText);
-			  noticebuilder.setSmallIcon(com.keshogroup.cartrader.R.drawable.autotraderbw);
-			  noticebuilder.setContentTitle(tickerText);
-			  noticebuilder.setContentText(str2);
-			  noticebuilder.setContentIntent(null); //no intent needed for test
-			  noticebuilder.setAutoCancel(true);
-			  notice= noticebuilder.build();
-			 // notice= new Notification.Builder(this).build();
-			  
-			  NotificationManager nm;
-			  nm= (NotificationManager) getSystemService(NOTIFICATION_SERVICE);//attach to the system service
-			  nm.notify(28, notice); //send out notice with notification manager
-			  
-           	//*************
-  		  
-			  button2.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP,2);
-           	
-           	 }
-            }); 
+        mButton2.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				// Perform action on click
+				stopService(myintent);
+
+				//startActivity(myintent2); //not needed
+
+				//*************
+				Notification notice;
+				Builder noticebuilder = new Builder(CartraderActivity.this);
+				String str = "New Car Alert";
+				String str2 = "Visit autotrader.com";
+				CharSequence tickerText = str.subSequence(0, str.length());
+
+				noticebuilder.setTicker(tickerText);
+				noticebuilder.setSmallIcon(com.keshogroup.cartrader.R.drawable.autotraderbw);
+				noticebuilder.setContentTitle(tickerText);
+				noticebuilder.setContentText(str2);
+				noticebuilder.setContentIntent(null); //no intent needed for test
+				noticebuilder.setAutoCancel(true);
+				notice = noticebuilder.build();
+				// notice= new Notification.Builder(this).build();
+
+				NotificationManager nm;
+				nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);//attach to the system service
+				nm.notify(28, notice); //send out notice with notification manager
+
+				//*************
+
+				mButton2.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, 2);
+
+			}
+		});
         
         
         
-        button3.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
+        mButton3.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				// Perform action on click
 
 
-            	startActivity(myintent2);//camera
-   
-            	Log.i("popfly", "sent camera intent");
-           	 }
-            });        
+				startActivity(myintent2);//camera
+
+				Log.i("popfly", "sent camera intent");
+			}
+		});
         
-        button4.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
-            	//mTextView4.setText(mText2);
-            	sa[3]="button4";
-            	searchlist.setVisibility(0);//0vis, 4invis, 8 gone
-            	main.setVisibility(8);//0vis, 4invis, 8 gone
+        mButton4.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				// Perform action on click
+				//mTextView4.setText(mText2);
+				sa[3] = "mButton4";
+				searchlist.setVisibility(0);//0vis, 4invis, 8 gone
+				main.setVisibility(8);//0vis, 4invis, 8 gone
 
-           	 }
-            });       
+			}
+		});
         
-        buttonback.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
-            	searchlist.setVisibility(8);//0vis, 4invis, 8 gone
-            	main.setVisibility(0);//0vis, 4invis, 8 gone
+        mButtonBack.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				// Perform action on click
+				searchlist.setVisibility(8);//0vis, 4invis, 8 gone
+				main.setVisibility(0);//0vis, 4invis, 8 gone
 
-           	 }
-            });      
+			}
+		});
         
         
         
-        button5.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
-            	//mTextView4.setText(mText2);
-            	//array=myintent.getStringArrayExtra("com.keshogroup.cartrader.array");
-            	
-            	//Log.i("JSON", " "+array[51]);
+        mButton5.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				// Perform action on click
+				//mTextView4.setText(mText2);
+				//array=myintent.getStringArrayExtra("com.keshogroup.cartrader.array");
 
-            	//aadapter2.clear();
-            	//aadapter2.add("array");
-            	//aadapter2.notifyDataSetChanged();
-            	//lv2.requestLayout();
-            	//lv2.invalidate();
-            	
-            	//aadapter2.;//resets the data based on any new REST info
-            	restlist.setVisibility(0);//0vis, 4invis, 8 gone
-            	main.setVisibility(8);//0vis, 4invis, 8 gone
+				//Log.i("JSON", " "+array[51]);
 
-           	 }
-            });       
+				//aadapter2.clear();
+				//aadapter2.add("array");
+				//aadapter2.notifyDataSetChanged();
+				//lv2.requestLayout();
+				//lv2.invalidate();
+
+				//aadapter2.;//resets the data based on any new REST info
+				restlist.setVisibility(0);//0vis, 4invis, 8 gone
+				main.setVisibility(8);//0vis, 4invis, 8 gone
+
+			}
+		});
         
-        buttonback2.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
-            	restlist.setVisibility(8);//0vis, 4invis, 8 gone
-            	main.setVisibility(0);//0vis, 4invis, 8 gone
+        mButtonBack2.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				// Perform action on click
+				restlist.setVisibility(8);//0vis, 4invis, 8 gone
+				main.setVisibility(0);//0vis, 4invis, 8 gone
 
-           	 }
-            });       
+			}
+		});
         
         
         

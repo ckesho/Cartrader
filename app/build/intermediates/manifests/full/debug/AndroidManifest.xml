@@ -18,11 +18,11 @@
         android:label="@string/app_name"
         android:theme="@style/Theme.AppCompat.Light.DialogWhenLarge" >
         <service
-            android:name="com.keshogroup.cartrader.CartraderService"
+            android:name="com.keshogroup.cartrader.controller.CartraderService"
             android:icon="@drawable/circle" />
 
         <activity
-            android:name="com.keshogroup.cartrader.CartraderActivity"
+            android:name="com.keshogroup.cartrader.controller.CartraderActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>

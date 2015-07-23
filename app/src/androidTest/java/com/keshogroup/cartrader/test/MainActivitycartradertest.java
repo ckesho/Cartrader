@@ -1,6 +1,6 @@
 package com.keshogroup.cartrader.test;
 
-import com.keshogroup.cartrader.CartraderActivity;
+import com.keshogroup.cartrader.controller.CartraderActivity;
 
 import android.test.ActivityInstrumentationTestCase2;
 
