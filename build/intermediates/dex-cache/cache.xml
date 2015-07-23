@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/darren/Developer/Cartrader/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="/Users/darren/Developer/Cartrader/app/build/intermediates/pre-dexed/debug/classes-51f9739f63cf29b8c90013bd3aeb480452ab3d00.jar" />
+    </item>
+    <item
+        jar="/Users/darren/Developer/Cartrader/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="/Users/darren/Developer/Cartrader/app/build/intermediates/pre-dexed/debug/classes-efa0a74dc8b8dcf0b9be816107f8d7f001122b95.jar" />
+    </item>
+    <item
+        jar="/Users/darren/Developer/Cartrader/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/libs/internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="/Users/darren/Developer/Cartrader/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-d1766df17f2830070cbf6c7d6d8f6bf0327a87d1.jar" />
+    </item>
+    <item
+        jar="/Users/darren/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="/Users/darren/Developer/Cartrader/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.0-6bbfa61efeea11cd4bb13d94499a02beadd6f78a.jar" />
+    </item>
+
+</items>
