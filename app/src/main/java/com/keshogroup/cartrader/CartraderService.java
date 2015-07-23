@@ -65,38 +65,7 @@ public class CartraderService extends IntentService {
         } else {
 
             HttpURLConnection f;
-            String smethod = "GET";//PUT? or GET? or POST
-            //String surl= "https://www.google.com/search?q=weather+atlanta&ie=utf-8&oe=utf-8";
-            //String surl= "https://www.facebook.com/dialog/feed?app_id=145634995501895&display=popup&caption=This%20isA%20Test&link=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2F&redirect_uri=https%3A%2F%2Fdevelopers.facebook.com%2Ftools%2Fexplorer";
-
-            //basic GET method layout GET http://api.wunderground.com/api/852ddd19c6a16593/features/settings(optional)/q/query.format
-            // Features:
-              /*
-    			geolookup 	Returns the the city name, zip code / postal code, latitude-longitude coordinates and nearby personal weather stations.
-				autocomplete 	Returns a list of locations or hurricanes which match against a partial query.
-				conditions		Returns Current conditions
-				forecast		Returns 3-day forecast summary
-				almanac 	Historical average temperature for today
-				astronomy 	Returns the moon phase, sunrise and sunset times.
-				
-								
-				query
-				    The location for which you want weather information. Examples:
-				    CA/San_Francisco	US state/city
-				    60290				US zipcode
-				    Australia/Sydney	country/city
-				    37.8,-122.4			latitude,longitude
-				    KJFK				airport code
-				    pws:KCASANFR70		PWS id
-				    autoip				AutoIP address location
-				    autoip.json?geo_ip=38.102.136.138	specific IP address location
-				format
-				    json, or xml
-				
-				    Output format.
-				
-				    For JSONP, you may add ?callback=your_js_callback_function to the request URL
-				*/
+            String smethod = CartraderClient.METHOD_GET;
             String query = "/q/30328";
             String format = ".json";
             String web = "http://api.wunderground.com/api";
@@ -131,9 +100,6 @@ public class CartraderService extends IntentService {
 			  */
 
                 gotaction = br.readLine();//toString();
-                //br.mark(15);
-                //br.reset();
-                //gotaction="c"+br.readLine()+br.readLine()+br.readLine()+"c"+br.readLine()+"c";
                 int cnt = 0;
                 while (br.read() != -1) {
                     //This pulls every potential line inside the buffer.
@@ -141,84 +107,49 @@ public class CartraderService extends IntentService {
                     cnt++;
                     if (cnt == 51) {//51 is the line with temperature information
                         gotaction3 = br.readLine();
-                        //gotaction=gotaction+cnt+ gotaction3;//removed count from string
                         gotaction = gotaction + gotaction3;
                         cnt++;
                     }
                     gotaction = gotaction + br.readLine();
-                    //gotaction=gotaction+cnt+ br.readLine();//removed count from string
 
-                }//end while
-
-                //jobj= (JSONObject) new JSONTokener(gotaction3).nextValue();
-                //jarray= new JSONArray(gotaction3);
-                //jarray= (JSONArray)new JSONTokener(gotaction).nextValue();
-                //jarray2= new JSONArray(jobj.names());
+                }
                 jtoken = new JSONTokener(gotaction);
-                //sresult=(String)jtoken.nextValue();
-                //Log.i("JSON", sresult);
 
                 int cnt2 = 0;
                 while (jtoken.more()) {
                     array[cnt2] = (String) jtoken.nextValue();
-                    //Log.i("JSON", array[cnt2]);
                     jtoken.nextString('"');//fastforward to next string value by moving to \"
                     jtoken.back();//back up one char so that \" can be properly consumed with "nextValue" call
                     cnt2++;
                 }
-			  
-			  /*
-			  while (jtoken.more()){
-			  sresult=(String)jtoken.nextValue();
-			  Log.i("JSON", sresult);
-			  jtoken.nextString('"');//fastforward to next string value by moving to \"
-			  jtoken.back();//back up one char so that \" can be properly consumed with "nextValue" call
-			  }
-			  */
-
-                //jobj= (JSONObject) jtoken.nextValue();
-                //JSONObject a[]= new JSONObject[101];
-
-                //a[10]=jarray2.getJSONObject(0);
-                //Log.i("JSON", "jobj= "+jobj.toString()+"length of jobj= "+jobj.length() +", jarray="+ jarray.getString(51)+"jarray.length"+ jarray.length()+", jarray2=" + jarray2.getString(14)+"jarray2.length"+ jarray2.length()+"j2 tostring"+jarray2.toString()+ ", a10="+a[10].toString());
-                //Log.i("JSON", jtoken.toString());
 
                 sresult = "results";
                 intent.putExtra(sresult, gotaction);
-                Log.i("popfly", "http sent, intent return");
-
+                Log.i(TAG, "http sent, intent return");
 
             } catch (Exception ex) {
-                Log.i("popfly", "error" + ex);
-
+                Log.i(TAG, "error" + ex);
             }
-            //finally{}
-			  
-			  
-			  /*
-			  https://www.facebook.com/dialog/feed?
-				  app_id=145634995501895
-				  &display=popup&caption=This%20isA%20Test 
-				  //&link=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2F//no link needed
-				  &redirect_uri=https%3A%2F%2Fdevelopers.facebook.com%2Ftools%2Fexplorer
-				  */
+
         }
 
+        createNotification(array, gotaction, gotaction2, gotaction3, code, length, networkready1, networkready2);
 
+    }//end of on Handle
+
+    private void createNotification(String[] array, String gotaction, String gotaction2, String gotaction3, int code, int length, boolean networkready1, boolean networkready2) {
         Notification notice;
         Builder noticebuilder = new Builder(this);
         String str = " " + networkready1 + networkready2 + gotaction3;
         CharSequence tickerText = str.subSequence(0, str.length());
 
         noticebuilder.setTicker(tickerText);
-        noticebuilder.setSmallIcon(com.keshogroup.cartrader.R.drawable.autotraderbw);
+        noticebuilder.setSmallIcon(R.drawable.autotraderbw);
         noticebuilder.setContentTitle(tickerText);
-        //noticebuilder.setContentText("background service, facebook update");
         noticebuilder.setContentText(gotaction3);
         noticebuilder.setContentIntent(null); //no intent needed for test
         noticebuilder.setAutoCancel(true);
         notice = noticebuilder.build();
-        // notice= new Notification.Builder(this).build();
 
         NotificationManager nm;
         nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);//attach to the system service
@@ -226,44 +157,14 @@ public class CartraderService extends IntentService {
 
 
         Log.i(TAG, "code" + code + ", length= " + length + ", responsecode= " + gotaction2 + ", output" + gotaction);
-			  
-		  /*
-				Intent myintent2= new Intent(MediaStore.INTENT_ACTION_STILL_IMAGE_CAMERA);
-	           	startActivity(myintent2); //not needed
-			 */
 
         Intent returnintent = new Intent();
         returnintent.putExtra("com.keshogroup.cartrader.array", array);
         returnintent.setAction("actionpack");
         LocalBroadcastManager lbm = null;
-        //lbm=null;
-        //lbm.getInstance(this);
-        //lbm.sendBroadcast(returnintent);
-        //LocalBroadcastManager.getInstance(this).sendBroadcast(returnintent);
-        //lbm.getInstance(this).sendBroadcast(returnintent);
-
         sendBroadcast(returnintent);
         Log.i(TAG, "Broadcast sent");
-        //startActivity(returnintent);
-
-			  /*
-			   * cannot place in shared preference because arrays not allowed
-			  static final String REST_ARRAY = "restarray";
-			  alanview.level.score = savedInstanceState.getInt(STATE_SCORE);
-			  
-		        savedInstanceState.putInt(STATE_SCORE, alanview.level.score);
-		        savedInstanceState.putInt(STATE_LEVEL, alanview.level.currentnumber);
-		        //bundle will not keep info if completely destroyed ie turn off phone so in addition use shardpref!
-		        SharedPreferences sharedPrefcartrader = CartraderActivity.this.getPreferences(Context.MODE_PRIVATE);
-		        //SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-		        SharedPreferences.Editor editor = sharedPref.edit();
-		        editor.putInt(getString(R.string.string_score), alanview.level.score);
-		        editor.putInt(getString(R.string.string_level), alanview.level.currentnumber);
-		        //editor.putInt(getString(R.string.saved_high_score), newHighScore);
-		        editor.commit();
-			 */
-
-    }//end of on Handle
+    }
 
 
 }
