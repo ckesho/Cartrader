@@ -9,19 +9,16 @@ package com.keshogroup.cartrader;
  */
 
 import android.support.v4.content.LocalBroadcastManager;
-import android.support.v7.app.ActionBarActivity;
 import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.Notification.Builder;
-import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.provider.MediaStore;
@@ -30,25 +27,20 @@ import android.view.HapticFeedbackConstants;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.keshogroup.cartrader.Myservice;
-
 import android.view.View;
-import android.view.ViewDebug.FlagToString;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
-import android.widget.SimpleAdapter.ViewBinder;
 import android.widget.TextView;
 
 import java.lang.String;
 
 
 
-public class MainActivitycartrader extends Activity {
+public class CartraderActivity extends Activity {
 	
 	//define views
 	TextView tv2, tv3, tv4;
@@ -60,8 +52,8 @@ public class MainActivitycartrader extends Activity {
 	//ArrayAdapter aadapter;
 	Button button1, button2, button3, button4, button5, buttonback2, buttonback; 
 	RelativeLayout main, searchlist, restlist;
-	//Myservice myservice;
-	//Myservice myservice= new Myservice("Myservice");
+	//CartraderService myservice;
+	//CartraderService myservice= new CartraderService("CartraderService");
 	//myservice.onHandleIntent(myintent);//works
 	Intent myintent;
 	Intent myintent2;
@@ -81,7 +73,7 @@ public class MainActivitycartrader extends Activity {
 			if(intent.getStringArrayExtra("com.keshogroup.cartrader.array")!=null){
 				//update the array, adapter, and view
 				array=intent.getStringArrayExtra("com.keshogroup.cartrader.array");
-            	aadapter2 = new ArrayAdapter<String>(MainActivitycartrader.this, R.layout.list2, array);
+            	aadapter2 = new ArrayAdapter<String>(CartraderActivity.this, R.layout.list2, array);
             	lv2.setAdapter(aadapter2);
 				Log.i("JSON", "updated array");
 			}
@@ -98,7 +90,7 @@ public class MainActivitycartrader extends Activity {
 		filter= new IntentFilter("actionpack");
 		this.registerReceiver(br, filter);
 		//LocalBroadcastManager.getInstance(this).registerReceiver(br, filter);
-		myintent = new Intent(this, Myservice.class);
+		myintent = new Intent(this, CartraderService.class);
 		myintent2= new Intent(MediaStore.INTENT_ACTION_STILL_IMAGE_CAMERA);//emulator has no camera
 		
 		array[0]="temp";
@@ -214,7 +206,7 @@ public class MainActivitycartrader extends Activity {
     		
            	//*************
 			  Notification notice;
-			  Builder noticebuilder= new Builder(MainActivitycartrader.this);
+			  Builder noticebuilder= new Builder(CartraderActivity.this);
 			  String str= "New Car Alert";
 			  String str2= "Visit autotrader.com";
 			  CharSequence tickerText= str.subSequence(0, str.length());

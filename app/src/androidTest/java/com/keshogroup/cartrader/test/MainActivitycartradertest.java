@@ -1,26 +1,24 @@
 package com.keshogroup.cartrader.test;
 
-import junit.framework.TestCase;
-
-import com.keshogroup.cartrader.MainActivitycartrader;
+import com.keshogroup.cartrader.CartraderActivity;
 
 import android.test.ActivityInstrumentationTestCase2;
 
 public class MainActivitycartradertest extends
-		ActivityInstrumentationTestCase2<MainActivitycartrader> {
+		ActivityInstrumentationTestCase2<CartraderActivity> {
 	//constructor
 	//public MainActivitycartradertest(){}
 	/**
 	  public MainActivitycartradertest(){
-	  super(MainActivitycartrader.class);
+	  super(CartraderActivity.class);
 	  
 	  }
 	 */
 	
 	
-	public MainActivitycartradertest(Class<MainActivitycartrader> activityClass) {
+	public MainActivitycartradertest(Class<CartraderActivity> activityClass) {
 		super(activityClass);
-		//super(MainActivitycartrader.class);
+		//super(CartraderActivity.class);
 		// TODO Auto-generated constructor stub
 		
 	}
