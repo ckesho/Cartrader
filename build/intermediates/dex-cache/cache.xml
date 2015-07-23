@@ -2,18 +2,18 @@
 <items version="2" >
 
     <item
+        jar="/Users/darren/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3.1/ecb6e1f8e4b0e84c4b886c2f14a1500caf309757/gson-2.3.1.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="/Users/darren/Developer/Cartrader/app/build/intermediates/pre-dexed/debug/gson-2.3.1-8f5310e0d8a3ed81ed065a268dd48611e7fa9150.jar" />
+    </item>
+    <item
         jar="/Users/darren/Developer/Cartrader/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.0 rc2"
         sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
         <dex dex="/Users/darren/Developer/Cartrader/app/build/intermediates/pre-dexed/debug/classes-51f9739f63cf29b8c90013bd3aeb480452ab3d00.jar" />
-    </item>
-    <item
-        jar="/Users/darren/Developer/Cartrader/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
-        <dex dex="/Users/darren/Developer/Cartrader/app/build/intermediates/pre-dexed/debug/classes-efa0a74dc8b8dcf0b9be816107f8d7f001122b95.jar" />
     </item>
     <item
         jar="/Users/darren/Developer/Cartrader/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/libs/internal_impl-22.2.0.jar"
@@ -28,6 +28,20 @@
         revision="23.0.0 rc2"
         sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
         <dex dex="/Users/darren/Developer/Cartrader/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.0-6bbfa61efeea11cd4bb13d94499a02beadd6f78a.jar" />
+    </item>
+    <item
+        jar="/Users/darren/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit/retrofit/1.9.0/a681c044244d9fc375198588297a39ba78028423/retrofit-1.9.0.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="a681c044244d9fc375198588297a39ba78028423">
+        <dex dex="/Users/darren/Developer/Cartrader/app/build/intermediates/pre-dexed/debug/retrofit-1.9.0-e3d9a0258838ec73ec2db7013877dd5ce947e207.jar" />
+    </item>
+    <item
+        jar="/Users/darren/Developer/Cartrader/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="/Users/darren/Developer/Cartrader/app/build/intermediates/pre-dexed/debug/classes-efa0a74dc8b8dcf0b9be816107f8d7f001122b95.jar" />
     </item>
 
 </items>

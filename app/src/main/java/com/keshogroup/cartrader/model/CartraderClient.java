@@ -5,6 +5,7 @@ package com.keshogroup.cartrader.model;
  */
 public class CartraderClient {
 
+    public static final String API_KEY = "852ddd19c6a16593";
     public static final String METHOD_GET = "GET";
 
 }
