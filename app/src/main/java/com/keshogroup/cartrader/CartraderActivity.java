@@ -43,9 +43,9 @@ import java.lang.String;
 public class CartraderActivity extends Activity {
 	
 	//define views
-	TextView tv2, tv3, tv4;
-	CharSequence text2;
-	String string2;
+	TextView mTextView2, mTextView3, mTextView4;
+	CharSequence mText2;
+	String mString2;
 	SimpleAdapter simpleadapter;
 	ListView lv1,lv2,lv4;
 	ListAdapter listadapter;
@@ -120,9 +120,9 @@ public class CartraderActivity extends Activity {
 		//ArrayAdapter aadapter = new ArrayAdapter(this, R.string.app_name);
 		//ArrayAdapter aadapter = new ArrayAdapter(this, R.id.l2tv1);
 		
-		tv2 = (TextView) findViewById(R.id.textView2);
-		tv3 = (TextView) findViewById(R.id.textView3);
-		tv4 = (TextView) findViewById(R.id.textView4);
+		mTextView2 = (TextView) findViewById(R.id.textView2);
+		mTextView3 = (TextView) findViewById(R.id.textView3);
+		mTextView4 = (TextView) findViewById(R.id.textView4);
 		lv1 = (ListView) findViewById(R.id.listView1);
 		lv2 = (ListView) findViewById(R.id.listView2);
 		button1 = (Button) findViewById(R.id.button1);
@@ -138,14 +138,14 @@ public class CartraderActivity extends Activity {
 		//ListAdapter la = new ListAdapter(this.setContentView(R.array.car_database));
 		//ListAdapter la = new ListAdapter(this, R.array.car_database);
 		
-		string2= "mystring";
-		text2= (CharSequence) string2;
+		mString2 = "mystring";
+		mText2 = (CharSequence) mString2;
 		
-		//tv4.setText(text2);
-		//lv1.addHeaderView(tv4);
+		//mTextView4.setText(mText2);
+		//lv1.addHeaderView(mTextView4);
 		lv1.setAdapter(aadapter);
 		lv2.setAdapter(aadapter2);
-		//tv3.setText(getPackageName());
+		//mTextView3.setText(getPackageName());
 		
 
 		
@@ -189,8 +189,8 @@ public class CartraderActivity extends Activity {
 
             	
             	
-            	text2= (CharSequence)myintent.getPackage();
-            	//tv2.setText(text2);
+            	mText2 = (CharSequence)myintent.getPackage();
+            	//mTextView2.setText(mText2);
 
             	Log.i("popfly", "sent intent");
            	 }
@@ -247,7 +247,7 @@ public class CartraderActivity extends Activity {
         button4.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Perform action on click
-            	//tv4.setText(text2);
+            	//mTextView4.setText(mText2);
             	sa[3]="button4";
             	searchlist.setVisibility(0);//0vis, 4invis, 8 gone
             	main.setVisibility(8);//0vis, 4invis, 8 gone
@@ -269,7 +269,7 @@ public class CartraderActivity extends Activity {
         button5.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Perform action on click
-            	//tv4.setText(text2);
+            	//mTextView4.setText(mText2);
             	//array=myintent.getStringArrayExtra("com.keshogroup.cartrader.array");
             	
             	//Log.i("JSON", " "+array[51]);
